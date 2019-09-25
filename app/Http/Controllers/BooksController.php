@@ -22,7 +22,12 @@ class BooksController extends Controller {
 			'author' => 'required',
 		]);
 		$book->update($data);
+		return redirect('/books/'.$book);
 		//$book->update($this->validateRequest())
+	}
+	public function destroy(Book $book){
+		$book->delete();
+		return redirect('/books');
 	}
 	public function validateRequest(){
 		$data = request()->validate([
